@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	
+	
+	<persistence-unit name="vetwebpu">
+
+   		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+   		
+		<jta-data-source>java:jboss/datasources/vetwebds</jta-data-source>
+   		
+		<class>com.vetweb.model.Animal</class>
+		<class>com.vetweb.model.Atendimento</class>
+		<class>com.vetweb.model.Clinica</class>
+		<class>com.vetweb.model.Colaborador</class>
+		<class>com.vetweb.model.Contato</class>
+		<class>com.vetweb.model.Documento</class>
+		<class>com.vetweb.model.Endereco</class>
+		<class>com.vetweb.model.Especie</class>
+		<class>com.vetweb.model.Exame</class>
+		<class>com.vetweb.model.Medicamento</class>
+		<class>com.vetweb.model.ModeloDocumento</class>
+		<class>com.vetweb.model.Patologia</class>
+		<class>com.vetweb.model.Pessoa</class>
+		<class>com.vetweb.model.Prescricao</class>
+		<class>com.vetweb.model.Prontuario</class>
+		<class>com.vetweb.model.ProntuarioPatologia</class>
+		<class>com.vetweb.model.ProntuarioVacina</class>
+		<class>com.vetweb.model.Proprietario</class>
+		<class>com.vetweb.model.Protocolo</class>
+		<class>com.vetweb.model.Raca</class>
+		<class>com.vetweb.model.TipoDeAtendimento</class>
+		<class>com.vetweb.model.Vacina</class>
+		<class>com.vetweb.model.Pelagem</class>
+
+		<properties>
+		
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/vetweb_database" />
+			<property name="javax.persistence.jdbc.user" value="postgres" />
+			<property name="javax.persistence.jdbc.password" value="postgres" />
+						
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			
+		</properties>
+		
+	</persistence-unit>
+
+</persistence>

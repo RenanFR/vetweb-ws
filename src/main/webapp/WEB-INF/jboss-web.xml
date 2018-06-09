@@ -1,0 +1,5 @@
+<jboss-web>
+	
+	<context-root>/vetweb-api</context-root>
+
+</jboss-web>
