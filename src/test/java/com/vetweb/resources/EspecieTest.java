@@ -15,7 +15,7 @@ import org.junit.Test;
 import com.vetweb.model.Especie;
 
 
-public class ProntuarioTest {
+public class EspecieTest {
 	
 	private ResteasyWebTarget targetVetweb;
 	
@@ -28,7 +28,7 @@ public class ProntuarioTest {
 	@Test
 	public void testBuscaTodasAsEspecies() {
 		
-		String especiesBuscadas = targetVetweb.path("prontuario/especies").request().get(String.class);
+		String especiesBuscadas = targetVetweb.path("especies").request().get(String.class);
 		assertTrue(especiesBuscadas.contains("Especie 1"));
 		
 	}
@@ -37,9 +37,9 @@ public class ProntuarioTest {
 	public void testAdicionaEspecie() {
 		
 		Especie especie = new Especie();
-		especie.setDescricao("Especie Test");
+		especie.setDescricao("EspecieTest");
 		Entity<Especie> entity = Entity.entity(especie, MediaType.APPLICATION_JSON);
-		Response response = targetVetweb.path("prontuario/especies")
+		Response response = targetVetweb.path("especies")
 				.request()
 				.post(entity);
 		String locNovaEspecie = response.getHeaderString("Location");

@@ -11,7 +11,7 @@
 	
 	<context-param>
 		<param-name>javax.ws.rs.Application</param-name>
-		<param-value>com.vetweb.resources.ProntuarioResource</param-value>
+		<param-value>com.vetweb.resources.EspecieResource</param-value>
 	</context-param>
 
 	<context-param>

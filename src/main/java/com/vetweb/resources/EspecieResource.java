@@ -17,8 +17,8 @@ import com.vetweb.model.Especie;
 import com.vetweb.service.EspecieService;
 
 @RequestScoped
-@Path("prontuario")
-public class ProntuarioResource {
+@Path("especies")
+public class EspecieResource {
 
 	private URI uriVetweb = URI.create("/vetweb-api");
 	
@@ -27,14 +27,12 @@ public class ProntuarioResource {
 	@Inject
 	private EspecieService especieService;
 	
-	@Path("especies")
 	@GET
 	@Produces(value = MediaType.APPLICATION_JSON)
 	public List<Especie> getEspecies() {
 		return especieService.all();
 	}
 	
-	@Path("especies")
 	@POST
 	@Consumes(value = MediaType.APPLICATION_JSON)
 	public Response postEspecie(Especie especie) {
