@@ -15,7 +15,7 @@ public class ProductListClientTest
 
    public static void main(String[] args)
    {
-      list("http://localhost:8080/vetweb/products");
+      list("http://localhost:8080/vetweb-api/products");
 
    }
 

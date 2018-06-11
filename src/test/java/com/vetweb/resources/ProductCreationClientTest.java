@@ -17,7 +17,7 @@ public class ProductCreationClientTest
    public static void main(String[] args) throws MalformedURLException
    {
       Client client = ClientBuilder.newClient();
-      Builder request = client.target("http://localhost:8080/vetweb/products")
+      Builder request = client.target("http://localhost:8080/vetweb-api/products")
             .request().accept(MediaType.APPLICATION_JSON);
 
       Entity<Product> entity = Entity.entity(new Product("new product"), MediaType.APPLICATION_JSON);
