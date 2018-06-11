@@ -1,26 +1,27 @@
 package com.vetweb.resources;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.jboss.resteasy.client.jaxrs.ResteasyClient;
+import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
+import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.vetweb.model.Especie;
 
+
 public class ProntuarioTest {
 	
-	private WebTarget targetVetweb;
+	private ResteasyWebTarget targetVetweb;
 	
 	@Before
 	public void configurarEnderecoRequisicao() {
-		Client client = ClientBuilder.newClient();
+		ResteasyClient client = new ResteasyClientBuilder().build();
 		targetVetweb = client.target("http://localhost:8080/vetweb-api/");		
 	}
 	
@@ -28,7 +29,7 @@ public class ProntuarioTest {
 	public void testBuscaTodasAsEspecies() {
 		
 		String especiesBuscadas = targetVetweb.path("prontuario/especies").request().get(String.class);
-		assertTrue(especiesBuscadas.contains("Ephippiorhynchus"));
+		assertTrue(especiesBuscadas.contains("Especie 1"));
 		
 	}
 	
@@ -37,10 +38,12 @@ public class ProntuarioTest {
 		
 		Especie especie = new Especie();
 		especie.setDescricao("Especie Test");
+		Entity<Especie> entity = Entity.entity(especie, MediaType.APPLICATION_JSON);
 		Response response = targetVetweb.path("prontuario/especies")
 				.request()
-				.post(Entity.entity(especie, MediaType.APPLICATION_JSON));
+				.post(entity);
 		String locNovaEspecie = response.getHeaderString("Location");
+		System.out.println(response.getStatus());
 		assertTrue(response.getStatus() == 201);
 		assertTrue(!locNovaEspecie.isEmpty());
 		

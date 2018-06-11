@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 // @author 11151504898
 import com.vetweb.model.Animal;
@@ -66,6 +67,7 @@ public class AnimalDAO implements IDAO<Animal>{
         return entityManager.createNamedQuery("quantidadeAnimais", Long.class).getSingleResult();
     }
     
+    @Transactional
     public void salvarEspecie(Especie especie){
         if(especie.getEspecieId() == null){
             entityManager.persist(especie);
