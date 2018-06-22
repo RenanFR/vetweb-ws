@@ -6,6 +6,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -31,6 +32,12 @@ public class EspecieResource {
 	@Produces(value = MediaType.APPLICATION_JSON)
 	public List<Especie> getEspecies() {
 		return especieService.all();
+	}
+	
+	@DELETE
+	public Response deleteEspecie(Long especie) {
+		especieService.remove(especie);
+		return Response.status(204).build();
 	}
 	
 	@POST

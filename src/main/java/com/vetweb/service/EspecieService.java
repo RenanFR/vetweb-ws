@@ -2,10 +2,10 @@ package com.vetweb.service;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import com.vetweb.dao.AnimalDAO;
+
 import com.vetweb.model.Especie;
 
 public class EspecieService implements Service<Especie> {
@@ -24,7 +24,8 @@ public class EspecieService implements Service<Especie> {
 	}
 
 	@Override
-	public void remove(Especie especie) {
+	public void remove(Long especieId) {
+		Especie especie = animalDAO.especiePorId(especieId);
 		animalDAO.removerEspecie(especie);
 	}
 

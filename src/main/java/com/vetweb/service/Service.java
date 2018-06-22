@@ -8,7 +8,7 @@ public interface Service<E> {
 	
 	void add(E entity);
 	
-	void remove(E entity);
+	void remove(Long entity);
 	
 	E get(Long id);
 	
